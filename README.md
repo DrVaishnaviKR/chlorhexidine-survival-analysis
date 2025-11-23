@@ -1,200 +1,187 @@
-# Survival Analysis of Chlorhexidine Trial Outcomes Using Python
+🎯 Survival Analysis of Chlorhexidine Trial Outcomes Using Python
 
-![Project Banner: Survival Analysis of Chlorhexidine Trial Outcomes Using Python](assets/project-banner.png)
 
-  <h2>👩‍⚕️ <b>Dr. Vaishnavi K R</b></h2>
-  🎓 PGDM — Artificial Intelligence & Data Science (Healthcare)
-</p>
 
-<p align="center">
-  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/stars/DrVaishnaviKR/chlorhexidine-survival-analysis?style=flat&color=yellow" /></a>
-  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/forks/DrVaishnaviKR/chlorhexidine-survival-analysis?style=flat&color=orange" /></a>
-  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/repo-size/DrVaishnaviKR/chlorhexidine-survival-analysis?color=blue" /></a>
-  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/last-commit/DrVaishnaviKR/chlorhexidine-survival-analysis?color=brightgreen" /></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" /></a>
-  <a href="https://colab.research.google.com/drive/1siiXPXCzPmw7i8jXARGoBufek39MiU8T"><img src="https://img.shields.io/badge/Open%20in-Colab-yellow?logo=googlecolab" /></a>
-</p>
 
----
 
-## 🧪 **Project Title**
 
-### **Survival Analysis of Chlorhexidine Trial Outcomes Using Python**
 
----
 
-## 📘 **Project Summary**
 
-This project performs a full **survival analysis** on a randomized clinical trial comparing **0.12% vs 0.20% Chlorhexidine** in ventilated ICU patients. The aim is to:
 
-* Understand mortality/VAP risk and treatment effectiveness
-* Analyze **time-to-event outcomes** with censoring
-* Apply survival techniques: Kaplan–Meier, Cox PH, Log-Rank
-* Interpret hazard ratios clinically
+👩‍⚕️ Author: Dr Vaishnavi K R
+📘 Colab Notebook:
+https://colab.research.google.com/drive/1b5pE58pYSHCVcbzj_wTYR3OQu6fqv9Ew?authuser=0
 
-This repository is fully reproducible using **Python, Lifelines, and Google Colab**.
+📌 Project Overview
 
----
+This project performs a complete Survival Analysis on a Chlorhexidine clinical trial dataset.
+It focuses on evaluating time-to-mortality and understanding the effect of treatment and key predictors.
 
-## 📊 **Dataset Description** <a name="dataset"></a>
+You will find:
+✔ Kaplan–Meier curves
+✔ Cox Proportional Hazards modeling
+✔ Log-Rank test
+✔ PH assumption checks
+✔ Clinical interpretation & hazard ratios
 
-The dataset contains patient demographics, clinical markers, treatment arm, microbial findings, and survival outcomes.
+All steps follow a clean, reproducible Python workflow using pandas, lifelines, matplotlib, and seaborn.
 
-### Includes:
+📂 Dataset Description
 
-* **Continuous variables:** Age, APACHE II, TLC, CPIS, Microbial load
-* **Categorical variables:** Gender, TreatmentArm, Organism_Present
-* **Time variable:** `time_to_event`
-* **Event indicator:** `event` (1 = event occurred)
+Files:
 
-### 📁 Dataset Files
+Raw data → data/raw/
 
-* **Raw data:** `/data/raw_data.xlsx`
-* **Cleaned data:** `/data/cleaned_data.xlsx`
-* **Cox model variables table:** `/data/cox_model_variables.xlsx`
-* **Research article:** `/docs/V7N3_e4a9253f-6b0b-4153-a4a4-7ef730d0ac80.pdf`
+Cleaned data → data/cleaned/
 
-### 📑 Mini Data Dictionary
+Results/figures → results/
 
-| Variable      | Meaning                 | Type        |
-| ------------- | ----------------------- | ----------- |
-| time_to_event | Days until event/censor | Numeric     |
-| event         | Outcome indicator       | Binary      |
-| TreatmentArm  | 0.12% vs 0.20%          | Categorical |
-| Age           | Age in years            | Numeric     |
-| APACHEII      | Severity score          | Numeric     |
+Documentation → document/
 
----
+Important Variables:
 
-## 🎯 **Problem Statement**
+time_to_event → Follow-up duration
 
-* Does 0.20% chlorhexidine reduce VAP or mortality risk?
-* Are survival rates different between gender or age groups?
-* Which physiological markers predict hazard risk?
-* Does microbial growth influence hazard?
+event → 1 = death, 0 = censored
 
----
+treatment_group → Chlorhexidine / Control
 
-## 🎯 **Objectives**
+age, gender
 
-* Perform EDA
-* Plot Kaplan–Meier curves
-* Run Log-Rank test
-* Fit Cox PH model
-* Check PH assumptions
-* Interpret hazard ratios clinically
+APACHEII, TLC_D1
 
----
+🎯 Problem Statements
 
-## 🔬 **Methodology**
+Does Chlorhexidine reduce the hazard of death?
 
-### 🧩 Data Preparation
+Do survival probabilities differ between treatment groups?
 
-* Handle missing values
-* Encode categorical variables
-* Create survival objects
+Which baseline variables significantly affect hazard?
 
-### 📊 Exploratory Data Analysis
+Is age or APACHEII score predictive of survival?
 
-* Summary statistics
-* Event vs censored distribution
-* Histograms, boxplots
+🎓 Objectives
 
-### 📈 Survival Modelling
+Perform EDA on survival data
 
-* Kaplan–Meier estimator
-* Life tables
-* Log-Rank test
-* Cox proportional hazards model
-* PH assumption diagnostics
+Estimate survival curves (KM)
 
-### 🩺 Interpretation
+Conduct Log-Rank tests
 
-* Hazard ratios
-* P-values
-* Clinical relevance
+Fit Cox PH models
 
----
+Assess PH assumptions
 
-## 🛠️ **Python Project Structure**
+Provide clinical interpretation
 
-```
-├── src
-│   ├── data_preprocessing.py
-│   ├── eda.py
-│   ├── km_analysis.py
-│   ├── logrank_test.py
-│   ├── cox_model.py
-│   └── plots.py
-│
-├── notebooks
-│   └── survival_capstone.ipynb
-│
-├── data
-│   ├── raw_data.xlsx
-│   ├── cleaned_data.xlsx
-│   └── cox_model_variables.xlsx
-│
-├── docs
-│   └── V7N3_e4a9253f-6b0b-4153-a4a4-7ef730d0ac80.pdf
-│
-├── results
-│   ├── km_overall.png
-│   ├── km_by_treatment.png
-│   ├── cumulative_hazard.png
-│   ├── cox_forest_plot.png
-│   └── schoenfeld_residuals.png
-│
-└── README.md
-```
+🧪 Methodology
+1. Data Preparation
 
----
+Handling missing values
 
-## 📈 **Key Visualizations** <a name="results"></a>
+Encoding categorical variables
 
-* Kaplan–Meier survival curves (overall & by treatment)
-* Cumulative hazard plots
-* Cox PH forest plot
-* Schoenfeld residual diagnostics
-* Event distribution charts
+Creating duration & event objects
 
----
+2. EDA
 
-## 📊 **Results & Interpretation**
+Basic cohort description
 
-* Survival probabilities at 30, 60, and 90 days
-* Which treatment arm shows better survival
-* Significant predictors in Cox model
-* Clinical interpretation of hazard ratios
+Event vs. censored proportions
 
----
+Distribution plots
 
-## 🧠 **Discussion**
+3. Survival Modeling
 
-* Clinical implications
-* Biases & censoring concerns
-* How findings relate to literature
+Kaplan–Meier survival estimation
 
----
+Log-Rank group comparison
 
-## 🏁 **Conclusion**
+Cox Proportional Hazards
 
-* Does chlorhexidine concentration influence survival?
-* Most important predictors
-* Role of survival modelling in clinical decision-making
+Schoenfeld residual diagnostics
 
----
+4. Interpretation
 
-## 🚀 **Future Work**
+Hazard ratios
 
-* Time-varying Cox models
-* Parametric survival models
-* Machine learning survival models
-* External dataset validation
+Clinical significance
 
----
+Adjustment for confounders
 
-<p align="center">
-  <b>✨ Prepared by: Dr. Vaishnavi K R</b><br>
-  <i>PGDM AI & Data Science in Healthcare</i>
-</p>
+📈 Key Visualizations
+1️⃣ Basic Structure of Data
+
+![Basic Data Structure](results/Basic structure of Data.png)
+
+2️⃣ Kaplan–Meier Model
+
+![KM Model](results/KM model.png)
+
+3️⃣ Survival Curves by Treatment Group
+
+![Survival Curves Treatment](results/Survival Curves by Treatment Group.png)
+
+4️⃣ Adjusted Survival Curves — APACHE II
+
+![Adjusted APACHEII](results/Adjusted Survival Curves APACHE II (partial effects).png)
+
+5️⃣ Adjusted Survival Curves — Treatment
+
+![Adjusted Treatment Curves](results/Adjusted Survival Curves Treatment Group.png)
+
+6️⃣ Cox Model — Hazard Ratios
+
+![Cox HR](results/Cox model Hazard Ratios (HR).png)
+
+7️⃣ Log-Rank Test
+
+![Log Rank Test](results/Log-Rank Test.png)
+
+8️⃣ Proportional Hazards Checks
+
+![PH Age](results/proportional hazards check age.png)
+
+![PH APACHEII](results/proportional hazards check APACHEII.png)
+
+![PH TLC](results/proportional hazards check TCL1.png)
+
+![PH Treatment](results/proportional hazards check treatment grp.png)
+
+📊 Results & Interpretation (Template)
+
+Chlorhexidine shows a lower hazard of mortality (HR < 1).
+
+Age and APACHEII appear to be strong predictors, with higher values increasing hazard.
+
+Survival curves suggest better survival probability in treatment group.
+
+Log-Rank test confirms statistical difference between groups.
+
+(Replace with your actual numerical results.)
+
+🩺 Discussion
+
+Treatment appears effective in reducing mortality hazard.
+
+Predictors behave consistently with clinical expectations.
+
+PH assumptions hold for most covariates.
+
+Dataset limitations include censoring bias & sample size.
+
+🏁 Conclusion
+
+Chlorhexidine intervention demonstrates promising improvements in survival outcomes.
+Key predictors such as APACHEII and age significantly affect mortality hazard—supporting the use of Cox PH modeling in clinical decision-making.
+
+🚀 Future Work
+
+Time-varying Cox models
+
+Parametric survival models
+
+Machine learning survival models
+
+External dataset validation
