@@ -1,4 +1,21 @@
-# ![Project Banner](github_banner_healthcare.png)
+# Survival Analysis of Chlorhexidine Trial Outcomes Using Python
+
+![Project Banner: Survival Analysis of Chlorhexidine Trial Outcomes Using Python](assets/project-banner.png)
+
+---
+<p align="center">
+  <img src="https://img.shields.io/badge/Method-Survival%20Analysis-blueviolet" alt="Survival Analysis Badge">
+  <img src="https://img.shields.io/badge/Topic-Clinical%20Trials-brightgreen" alt="Clinical Trials Badge">
+  <img src="https://img.shields.io/badge/Language-Python-informational?logo=python&logoColor=white" alt="Python Badge">
+</p>
+
+# 📈 Survival Analysis of Chlorhexidine Trial Outcomes Using Python
+
+<p align="center">
+  A comprehensive project using Python to analyze time-to-event data from Chlorhexidine clinical trial outcomes, focusing on Kaplan-Meier estimation and Cox proportional hazards modeling.
+</p>
+
+---
 
 <p align="center">
   <h2>👩‍⚕️ <b>Dr. Vaishnavi K R</b></h2>
