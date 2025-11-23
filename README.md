@@ -1,4 +1,4 @@
-# 🎯 Survival Analysis of Chlorhexidine Trial Outcomes Using Python
+# 🏥 Survival Analysis of Chlorhexidine Trial Outcomes Using Python
 
 ![Banner](Projectbanner/banner.png)
 
@@ -18,7 +18,7 @@
 
 ## 🚀 Quick overview
 
-This repository contains a reproducible, well-documented analysis pipeline for survival analysis of a Chlorhexidine clinical trial. The analysis answers clinical questions about treatment effect on mortality, and explores predictors such as age and APACHE II.
+This repository presents a complete survival analysis workflow on a Chlorhexidine clinical trial dataset. It explores how treatment, age, APACHE II score, and baseline characteristics influence patient survival. The analysis includes KM curves, Cox PH modeling, diagnostics, and clear visual interpretation — designed for healthcare researchers.
 
 **Key techniques used:** Kaplan–Meier estimation, Log-Rank tests, Cox Proportional Hazards models, Schoenfeld residual diagnostics, and informative visualisations.
 
@@ -98,18 +98,18 @@ pip install -r requirements.txt
 
 ## 🧪 Dataset description
 
-**Primary files:**
+A structured overview of variables used in the analysis:
 
-* `data/raw/` — raw uploaded files
-* `data/cleaned/` — cleaned, analysis-ready CSVs
+Variable	Description
+time_to_event	Follow-up duration in days
+event	1 = death, 0 = censored
+treatment_group	Chlorhexidine / Control
+age	Age of patient
+gender	Male / Female
+APACHEII	Severity score on admission
+TLC_D1	Total Leukocyte Count on Day 1
 
-**Important columns**
 
-* `time_to_event` — follow-up duration (days)
-* `event` — 1 = death, 0 = censored
-* `treatment_group` — `Chlorhexidine` / `Control`
-* `age`, `gender`
-* `APACHEII`, `TLC_D1`
 
 ---
 
@@ -133,7 +133,9 @@ pip install -r requirements.txt
 
 ### Additional diagnostics & figures
 
-* **Basic data structure:** `results/Basic structure of Data.png`
+* **Basic data structure:** <div align="center">
+  <img src="results/km_model.png" width="600" alt="Overall KM">
+</div>
 * **Adjusted survival (APACHE II):** `results/Adjusted Survival Curves APACHE II (partial effects).png`
 * **Adjusted survival (Treatment):** `results/Adjusted Survival Curves Treatment Group.png`
 * **Cox HR plot:** `results/Cox model Hazard Ratios (HR).png`
