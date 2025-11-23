@@ -1,182 +1,199 @@
-# 🌟 **Survival Analysis of Chlorhexidine Trial Outcomes Using Python**
-
-![Project Banner](https://via.placeholder.com/1200x300.png?text=Survival+Analysis+of+Chlorhexidine+Trial+Outcomes)
+# ![Project Banner](github_banner_healthcare.png)
 
 <p align="center">
-
-## 👩‍⚕️ **Author: Dr. Vaishnavi K R**
-
-### 🎓 *PGDM in Artificial Intelligence & Data Science (Healthcare)*
-
-<p align="center">
-<a href="https://www.linkedin.com"><img src="https://img.shields.io/badge/Author-Dr.Vaishnavi%20K%20R-purple?logo=githubpages"/></a>
-<a href="#"><img src="https://img.shields.io/badge/AI%20%26%20Data%20Science-PGDM-blue?logo=googlescholar"/></a>
-<a href="#"><img src="https://img.shields.io/badge/Healthcare-Analytics-green?logo=heartbeat"/></a>
+  <h2>👩‍⚕️ <b>Dr. Vaishnavi K R</b></h2>
+  🎓 PGDM — Artificial Intelligence & Data Science (Healthcare)
 </p>
 
 <p align="center">
-<a href="https://colab.research.google.com/drive/1siiXPXCzPmw7i8jXARGoBufek39MiU8T"><img src="https://img.shields.io/badge/Run%20on-Colab-yellow?logo=googlecolab"/></a>
-<a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10-blue?logo=python"/></a>
-<a href="#dataset"><img src="https://img.shields.io/badge/Dataset-Available-green?logo=data"/></a>
-</p>
+  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/stars/DrVaishnaviKR/chlorhexidine-survival-analysis?style=flat&color=yellow" /></a>
+  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/forks/DrVaishnaviKR/chlorhexidine-survival-analysis?style=flat&color=orange" /></a>
+  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/repo-size/DrVaishnaviKR/chlorhexidine-survival-analysis?color=blue" /></a>
+  <a href="https://github.com/DrVaishnaviKR/chlorhexidine-survival-analysis"><img src="https://img.shields.io/github/last-commit/DrVaishnaviKR/chlorhexidine-survival-analysis?color=brightgreen" /></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" /></a>
+  <a href="https://colab.research.google.com/drive/1siiXPXCzPmw7i8jXARGoBufek39MiU8T"><img src="https://img.shields.io/badge/Open%20in-Colab-yellow?logo=googlecolab" /></a>
 </p>
 
 ---
 
-## 🎯 **Project Title**
+## 🧪 **Project Title**
 
-### 🧪 *Survival Analysis of Chlorhexidine Trial Outcomes Using Python*
+### **Survival Analysis of Chlorhexidine Trial Outcomes Using Python**
 
 ---
 
 ## 📘 **Project Summary**
 
-This capstone project demonstrates a full end‑to‑end *survival analysis workflow* on a randomized clinical trial comparing **0.12% vs 0.20% chlorhexidine** in mechanically ventilated ICU patients.
+This project performs a full **survival analysis** on a randomized clinical trial comparing **0.12% vs 0.20% Chlorhexidine** in ventilated ICU patients. The aim is to:
 
-You will learn and implement:
+* Understand mortality/VAP risk and treatment effectiveness
+* Analyze **time-to-event outcomes** with censoring
+* Apply survival techniques: Kaplan–Meier, Cox PH, Log-Rank
+* Interpret hazard ratios clinically
 
-* 📈 **Kaplan–Meier survival estimation**
-* 🔍 **Log‑Rank hypothesis testing**
-* ⚕️ **Cox Proportional Hazards modelling**
-* 📊 **Clinical interpretation + diagnostics**
-
-> 🚀 Fully reproducible using Python + Colab Notebook.
+This repository is fully reproducible using **Python, Lifelines, and Google Colab**.
 
 ---
 
-## 📦 Files Provided
+## 📊 **Dataset Description** <a name="dataset"></a>
 
-* 📓 `/notebooks/survival_capstone.ipynb` — full Colab notebook
-* ⚙️ `/src/` — modular Python scripts
-* 📁 `/data/Chlorhexidine Trials Data Cleaned.xlsx` — cleaned dataset
-* 📊 `/results/` — plots, tables, visual outputs
-* 📄 `requirements.txt`
+The dataset contains patient demographics, clinical markers, treatment arm, microbial findings, and survival outcomes.
 
----
+### Includes:
 
-## 📚 **Short Summary**
+* **Continuous variables:** Age, APACHE II, TLC, CPIS, Microbial load
+* **Categorical variables:** Gender, TreatmentArm, Organism_Present
+* **Time variable:** `time_to_event`
+* **Event indicator:** `event` (1 = event occurred)
 
-This repository contains a full survival analysis pipeline performed on Chlorhexidine ICU trial data. The goal is to evaluate whether chlorhexidine concentration affects hazard of VAP or mortality using modern survival analysis techniques.
+### 📁 Dataset Files
 
----
+* **Raw data:** `/data/raw_data.xlsx`
+* **Cleaned data:** `/data/cleaned_data.xlsx`
+* **Cox model variables table:** `/data/cox_model_variables.xlsx`
+* **Research article:** `/docs/V7N3_e4a9253f-6b0b-4153-a4a4-7ef730d0ac80.pdf`
 
-## 📊 **Dataset Description**
+### 📑 Mini Data Dictionary
 
-**Source:** Chlorhexidine Trial Study — ICU patients receiving oral care.
-
-🔑 **Key Variables:**
-
-* `time_to_event` – days until event/censor
-* `event` – 1 = event occurred, 0 = censored
-* `TreatmentArm` – 0.12% or 0.20% solution
-* Clinical covariates: `Age`, `Gender`, `APACHEII`, `TLC_D1`, `Tracheostomy`, `CPIS`, `Oral_Microbial_Load`
-
-### 🔗 **Download Dataset Files**
-
-* 📥 **Raw Data:** /mnt/data/Data form Chlorhexidine Trial.xlsx
-* 🧹 **Cleaned Data:** /mnt/data/Chlorhexidine Trials Data Cleaned.xlsx
-* 🧾 **Data Dictionary:** *(see table below)*
-* 🎯 **Dependent Variable:** `time_to_event`, `event`
-* 🧩 **Independent Variables:** All clinical + demographic predictors
+| Variable      | Meaning                 | Type        |
+| ------------- | ----------------------- | ----------- |
+| time_to_event | Days until event/censor | Numeric     |
+| event         | Outcome indicator       | Binary      |
+| TreatmentArm  | 0.12% vs 0.20%          | Categorical |
+| Age           | Age in years            | Numeric     |
+| APACHEII      | Severity score          | Numeric     |
 
 ---
 
-## 📑 **Data Dictionary**
+## 🎯 **Problem Statement**
 
-| Column Name           | Description                               | Type        |
-| --------------------- | ----------------------------------------- | ----------- |
-| `time_to_event`       | Days from enrollment until event/censor   | Numeric     |
-| `event`               | Event indicator (1 = event, 0 = censored) | Binary      |
-| `TreatmentArm`        | 0.12% vs 0.20% chlorhexidine              | Categorical |
-| `Age`                 | Patient age in years                      | Numeric     |
-| `Gender`              | Male/Female                               | Categorical |
-| `APACHEII`            | Severity score at admission               | Numeric     |
-| `TLC_D1`              | Total leukocyte count Day 1               | Numeric     |
-| `Tracheostomy`        | Whether patient had tracheostomy          | Binary      |
-| `CPIS`                | Clinical Pulmonary Infection Score        | Numeric     |
-| `Oral_Microbial_Load` | Colony count/organism load                | Numeric     |
+* Does 0.20% chlorhexidine reduce VAP or mortality risk?
+* Are survival rates different between gender or age groups?
+* Which physiological markers predict hazard risk?
+* Does microbial growth influence hazard?
 
 ---
 
-## 🔍 Problem Statement
+## 🎯 **Objectives**
 
-This repository contains a capstone project implementing survival analysis on a randomized clinical trial comparing chlorhexidine 0.12% vs 0.20% in mechanically ventilated patients. The analysis demonstrates Kaplan–Meier estimation, Log-Rank testing, and Cox Proportional Hazards modelling with reproducible Python code (notebook + scripts).
+* Perform EDA
+* Plot Kaplan–Meier curves
+* Run Log-Rank test
+* Fit Cox PH model
+* Check PH assumptions
+* Interpret hazard ratios clinically
 
-## Files Provided
+---
 
-* `/notebooks/survival_capstone.ipynb` — full analysis runnable in Colab
-* `/src` — modular Python scripts (data_preprocessing.py, eda.py, km_analysis.py, logrank_test.py, cox_model.py, plots.py)
-* `/data/Chlorhexidine Trials Data Cleaned.xlsx` — cleaned dataset (sensitive data excluded from public repo if necessary)
-* `/results` — generated plots and tables
-* `requirements.txt` — environment dependencies
+## 🔬 **Methodology**
 
-## Data description
+### 🧩 Data Preparation
 
-* **Source:** Chlorhexidine clinical trial dataset (randomized, parallel-arm) — cleaned files included with project.
-* **Key variables:**
+* Handle missing values
+* Encode categorical variables
+* Create survival objects
 
-  * `time_to_event` — duration in days from randomisation to event or censoring
-  * `event` — event indicator (1 = event occurred, 0 = censored)
-  * `TreatmentArm` — 0.12% vs 0.20% chlorhexidine
-  * `Age`, `Gender`, `APACHEII`, `TLC_D1`, `Tracheostomy`, `CPIS`, `Oral_Microbial_Load`
+### 📊 Exploratory Data Analysis
 
-> Add a short data dictionary here describing each column (students should fill exact definitions and data types).
+* Summary statistics
+* Event vs censored distribution
+* Histograms, boxplots
 
-## Problem Statement (3–5 questions)
+### 📈 Survival Modelling
 
-1. Does Chlorhexidine 0.20% reduce the hazard of VAP/death compared to 0.12%?
-2. Are there survival differences by age groups or gender?
-3. Which clinical covariates (APACHE II, tracheostomy, TLC) significantly influence hazard rates?
+* Kaplan–Meier estimator
+* Life tables
+* Log-Rank test
+* Cox proportional hazards model
+* PH assumption diagnostics
 
-## Objectives
+### 🩺 Interpretation
 
-1. Perform EDA and data cleaning
-2. Estimate survival curves (Kaplan–Meier)
-3. Compare groups (Log-Rank)
-4. Fit Cox PH model and report hazard ratios
-5. Check PH assumptions and provide diagnostic plots
-6. Produce clear visualisations and clinical interpretations
+* Hazard ratios
+* P-values
+* Clinical relevance
 
-## Methodology (workflow)
+---
 
-1. **Data preparation** — load, impute/handle missing values, encode categorical variables, create `duration` & `event` columns.
-2. **EDA** — event/censor distribution, baseline table, descriptive plots.
-3. **Survival modelling** — Kaplan–Meier curves, Log-Rank tests, Cox PH modelling, Schoenfeld residuals test and plots.
-4. **Evaluation** — hazard ratios, p-values, survival probabilities at 30/60/90 days, clinical interpretation.
+## 🛠️ **Python Project Structure**
 
-## How to reproduce (Colab)
+```
+├── src
+│   ├── data_preprocessing.py
+│   ├── eda.py
+│   ├── km_analysis.py
+│   ├── logrank_test.py
+│   ├── cox_model.py
+│   └── plots.py
+│
+├── notebooks
+│   └── survival_capstone.ipynb
+│
+├── data
+│   ├── raw_data.xlsx
+│   ├── cleaned_data.xlsx
+│   └── cox_model_variables.xlsx
+│
+├── docs
+│   └── V7N3_e4a9253f-6b0b-4153-a4a4-7ef730d0ac80.pdf
+│
+├── results
+│   ├── km_overall.png
+│   ├── km_by_treatment.png
+│   ├── cumulative_hazard.png
+│   ├── cox_forest_plot.png
+│   └── schoenfeld_residuals.png
+│
+└── README.md
+```
 
-1. Open the Colab notebook: `https://colab.research.google.com/drive/1siiXPXCzPmw7i8jXARGoBufek39MiU8T` (provided).
-2. Upload `data/Chlorhexidine Trials Data Cleaned.xlsx` to the Colab session or mount Google Drive.
-3. Run `!pip install -r requirements.txt` (or `!pip install lifelines pandas matplotlib seaborn openpyxl`).
-4. Run the notebook cells sequentially. The notebook has sections for data prep, KM plots, Log-Rank tests, Cox modelling, PH checks, and result export.
+---
 
-## Key Visualisations (saved under `/results`)
+## 📈 **Key Visualizations** <a name="results"></a>
 
-* Kaplan–Meier survival curves (overall and by treatment)
-* Cumulative hazard functions
-* Schoenfeld residual plots (PH diagnostics)
-* Forest plot of hazard ratios
-* Event distribution bar charts
+* Kaplan–Meier survival curves (overall & by treatment)
+* Cumulative hazard plots
+* Cox PH forest plot
+* Schoenfeld residual diagnostics
+* Event distribution charts
 
-## Results (what to report)
+---
+
+## 📊 **Results & Interpretation**
 
 * Survival probabilities at 30, 60, and 90 days
-* Which groups show better survival
-* Hazard ratios with 95% CI and p-values
-* Clinical interpretation (effect size and relevance)
+* Which treatment arm shows better survival
+* Significant predictors in Cox model
+* Clinical interpretation of hazard ratios
 
-## Discussion points to include
+---
 
-* Clinical implications and comparison to literature
-* Limitations: CPIS diagnostic sensitivity, low event rates, LAMA censoring, missingness, confounding
-* Suggested future work: time-varying covariates, parametric survival models, external validation
+## 🧠 **Discussion**
 
-## Citation & References
+* Clinical implications
+* Biases & censoring concerns
+* How findings relate to literature
 
-* Original trial and background literature included in `references/` (see `Vyas et al., Annals of International Medical and Dental Research, 2021` PDF).
+---
 
-## Licence
+## 🏁 **Conclusion**
 
-Specify licence (e.g., MIT) and data usage notes. Remove or redact any PHI before publishing.
+* Does chlorhexidine concentration influence survival?
+* Most important predictors
+* Role of survival modelling in clinical decision-making
 
+---
+
+## 🚀 **Future Work**
+
+* Time-varying Cox models
+* Parametric survival models
+* Machine learning survival models
+* External dataset validation
+
+---
+
+<p align="center">
+  <b>✨ Prepared by: Dr. Vaishnavi K R</b><br>
+  <i>PGDM AI & Data Science in Healthcare</i>
+</p>
