@@ -124,7 +124,7 @@ TLC_D1	Total Leukocyte Count on Day 1
 **Kaplan–Meier model preview**
 
 <div align="center">
-  <img src="results/km model.png" width="600" alt="Overall KM">
+  <img src="results/KM_model.png" width="600" alt="Overall KM">
 </div>
 
 **Survival curves: treatment groups**
