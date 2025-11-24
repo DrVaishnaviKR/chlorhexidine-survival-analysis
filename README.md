@@ -1,4 +1,4 @@
-# 🧪📈 Survival Analysis of Chlorhexidine Trial Outcomes Using Python  
+#📈 Survival Analysis of Chlorhexidine Trial Outcomes Using Python  
 
 <p align="center">
 
@@ -23,7 +23,7 @@ This project is based on a real clinical trial case study titled:
 Published in *Annals of International Medical and Dental Research (2021)*.  
 
 The complete article is included in the repository at:  
-📄 `/document/Publication.pdf`  
+📄[Article](/document/Publication.pdf)
 
 This repository reproduces and interprets **time-to-VAP (Ventilator-Associated Pneumonia)** outcomes using classical Survival Analysis methods in Python.  
 All results, tables, and plots are generated using the Python analysis script and Jupyter workflow.
@@ -53,7 +53,8 @@ Kaplan–Meier estimation, Log-Rank test, Cox modelling, Schoenfeld tests, adjus
 # 3️⃣ Dataset Description 📚  
 
 **Source:** Hospital-based randomized controlled trial (n = 140).  
-**Working data:** Cleaned dataset based on `/data/Chlorhexidine Trials Data Cleaned.xlsx`.
+**Working data:** Cleaned dataset based on
+[Data](/data/Chlorhexidine Trials Data Cleaned.xlsx.)
 
 ### 📘 **Core Variables**
 
@@ -205,9 +206,11 @@ This project answers key clinical questions:
   <img src="results/cox_forest.png" width="600">
 </div>
 
-### **6. Nelson–Aalen (Cumulative Hazard)**
-- Small, step-wise increases  
-- Both arms identical in hazard accumulation  
+### **6. Adjusted Survival Curves  
+Adjusted survival curves were generated using the Cox Proportional Hazards model by fixing all covariates
+at their median values and varying one predictor at a time (Age, APACHE II, Treatment Arm).  
+These curves help interpret how individual variables affect estimated survival while holding all other factors constant.
+ 
 ### 🟣 **Adjusted Survival Curves**
 <div align="center">
   <img src="results/adj_curve_age.png" width="600"><br>
@@ -256,15 +259,19 @@ PDF: `/document/Publication.pdf`
 # 📄 License  
 This project is licensed under the **MIT License**.  
 You are free to use, modify, and distribute with attribution.
+[MIT LICENSE](LICENSE)
 
 ---
 
-<p align="center"><img src="https://img.shields.io/badge/Author-Dr.%20Vaishnavi%20K%20R-blue?style=for-the-badge"></p>
+<p align="center">
+  <img src="https://img.shields.io/badge/Author-Dr.%20Vaishnavi%20K%20R%20%7C%20AI%20%26%20Data%20Science%20in%20Healthcare-blue?style=for-the-badge">
+</p>
+
 
 ---
 
 **End of README**  
 
 
-# 7️⃣ Python Implementation Structure 💻  
+ 
 
