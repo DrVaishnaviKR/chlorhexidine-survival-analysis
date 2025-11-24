@@ -1,4 +1,4 @@
-### 📈 Survival Analysis of Chlorhexidine Trial Outcomes Using Python  
+# 📈 Survival Analysis of Chlorhexidine Trial Outcomes Using Python
 
 <p align="center">
 
