@@ -156,11 +156,7 @@ Data files stored in: `data/`
 - ML-based survival analysis (RSF, DeepSurv)  
 
 ---
-# 📚 Citation  
-Original Trial Paper: *Vyas et al., 2021*  
-Notebook / Script: `survival_analysis_of_chlorhexidine_trial_patients.py`  
-PDF: `/document/Publication.pdf`
----
+
 
 ## 📄 License
 This project is licensed under the **MIT License**.
@@ -172,3 +168,4 @@ This project is licensed under the **MIT License**.
 </p>
 ---
 **End of README**  
+---
