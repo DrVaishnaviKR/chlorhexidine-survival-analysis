@@ -30,222 +30,288 @@ All results, tables, and plots are generated using the Python analysis script an
 
 ---
 
-# 1️⃣ Project Title  
-**Survival Analysis of Chlorhexidine Trial Outcomes Using Python**
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Survival Analysis — Chlorhexidine Trial</title>
+  <style>
+    :root{
+      --accent:#16a085;
+      --accent-dark:#117a60;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#f7fffb;
+      --maxw:900px;
+      --font-sans: "Helvetica Neue", Arial, sans-serif;
+    }
+    body{
+      font-family:var(--font-sans);
+      background:linear-gradient(180deg,#fbfdfb 0%, #ffffff 100%);
+      color:#111827;
+      margin:0;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+    }
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      background:var(--bg);
+      box-shadow:0 6px 30px rgba(2,6,23,0.05);
+      border-radius:10px;
+      padding:28px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    h1{ margin:0; font-size:28px; letter-spacing:-0.02em; }
+    .subtitle{ color:var(--muted); margin-top:6px; font-size:13px; }
+    .badge{
+      background:linear-gradient(180deg,var(--accent) 0%, var(--accent-dark) 100%);
+      color:white;
+      padding:6px 10px;
+      border-radius:6px;
+      font-weight:600;
+      font-size:13px;
+      text-decoration:none;
+    }
+    .lead{
+      margin:18px 0 22px;
+      color:#334155;
+      line-height:1.45;
+    }
+    section{ margin-top:18px; }
+    .card{
+      background:var(--card);
+      border-left:4px solid var(--accent);
+      padding:14px 16px;
+      border-radius:8px;
+      margin-bottom:12px;
+    }
+    h2{ margin:8px 0 10px; font-size:18px; }
+    h3{ margin:6px 0; font-size:15px; color:#0f172a; }
+    ul{ margin:8px 0 12px 20px; color:#1f2937; }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:14px;
+    }
+    th, td{
+      text-align:left;
+      padding:8px 10px;
+      border-bottom:1px solid #edf2f7;
+    }
+    th{ background:#ffffff; color:#0f172a; font-weight:700; }
+    .images{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    .imgwrap{
+      border-radius:8px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 2px 12px rgba(2,6,23,0.04);
+      padding:6px;
+    }
+    img{ width:100%; height:auto; display:block; }
+    .small{ font-size:13px; color:var(--muted); margin-top:6px; }
+    .footer{
+      margin-top:18px;
+      padding-top:12px;
+      border-top:1px dashed #e6eef1;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .license{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      background:var(--accent);
+      color:white;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+    }
+    code{ background:#0f172a10; padding:2px 6px; border-radius:6px; font-family:monospace; }
+    @media (max-width:720px){
+      .images{ grid-template-columns: 1fr; }
+      header{ flex-direction:column; align-items:flex-start; gap:10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div>
+        <h1>Survival Analysis — Chlorhexidine Trial</h1>
+        <div class="subtitle">Kaplan–Meier | Cox PH | Log-Rank | Schoenfeld diagnostics</div>
+      </div>
+      <div style="text-align:right">
+        <a class="badge" href="LICENSE">MIT License</a>
+      </div>
+    </header>
 
----
+    <p class="lead">
+      This repository contains a full survival-analysis workflow for the clinical trial:
+      <strong>Effectiveness of oral hygiene with chlorhexidine (0.12% vs 0.20%) on incidence of VAP.</strong>
+      Results include KM curves, log-rank test, multivariable Cox model, Schoenfeld checks and forest plots.
+    </p>
 
-# 2️⃣ Project Summary ✍️  
-This project analyzes patient-level data from a randomized controlled trial comparing **0.12% vs 0.20% chlorhexidine mouthwash** for preventing Ventilator-Associated Pneumonia (VAP) in intubated ICU patients.
+    <!-- Project Summary -->
+    <section>
+      <div class="card">
+        <h2>Project Summary</h2>
+        <p>
+          A survival analysis of ICU patients receiving 0.12% or 0.20% chlorhexidine mouthwash.
+          Analyses were performed in Python using the <code>lifelines</code> package. The dataset shows high VAP-free survival, few events (n=7), and no statistically significant difference between arms (log-rank p = 0.16).
+        </p>
+      </div>
+    </section>
 
-**Outcome:**  
-- Time (days) until VAP (event = 1)  
-- Censoring for discharge, LAMA, or death (event = 0)
+    <!-- Dataset Description -->
+    <section>
+      <h2>Dataset Description</h2>
+      <div class="card">
+        <p class="small">Files in the repository: <code>data/Chlorhexidine Trials.xlsx</code>, <code>data/Data form Chlorhexidine Trial (Raw).xlsx</code>, <code>document/Publication.pdf</code>, and analysis results in <code>results/</code>.</p>
 
-**Why survival analysis?**  
-Because follow-up duration is variable, and many patients are censored — requiring **Kaplan–Meier**, **Log-Rank**, and **Cox Proportional Hazards** models.
+        <table aria-label="Dataset variables">
+          <thead>
+            <tr><th>Variable</th><th>Description</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>time</strong></td><td>Days until VAP or censoring</td><td>Continuous</td></tr>
+            <tr><td><strong>event</strong></td><td>Event indicator (1 = VAP, 0 = censored)</td><td>Binary</td></tr>
+            <tr><td>Age</td><td>Patient age (years)</td><td>Continuous</td></tr>
+            <tr><td>Gender</td><td>Male / Female</td><td>Categorical</td></tr>
+            <tr><td>chest_xray, culture, ulcer</td><td>Clinical indicators (binary)</td><td>Binary</td></tr>
+            <tr><td>apache_score, cpis, tlc_score, microbial_load</td><td>Severity & infection markers</td><td>Continuous</td></tr>
+            <tr><td>treatment_arm</td><td>1 = 0.12% | 2 = 0.20%</td><td>Categorical</td></tr>
+          </tbody>
+        </table>
 
-**Learning outcomes:**  
-Kaplan–Meier estimation, Log-Rank test, Cox modelling, Schoenfeld tests, adjusted survival curves, hazard interpretation.
+        <p class="small">Full data dictionary and transformation rules are included in the uploaded interpretation document: <a href="/mnt/data/interpretation_of_survival_analysis.docx">interpretation_of_survival_analysis.docx</a>.</p>
+      </div>
+    </section>
 
----
+    <!-- Problem Statement & Objectives -->
+    <section>
+      <div class="card">
+        <h2>Problem Statement</h2>
+        <p>Does 0.20% chlorhexidine reduce the incidence and hazard of VAP compared with 0.12% in mechanically ventilated ICU patients? Which baseline factors influence time to VAP?</p>
 
-# 3️⃣ Dataset Description 📚  
+        <h3>Objectives</h3>
+        <ul>
+          <li><strong>Primary:</strong> Compare VAP-free survival (0.12% vs 0.20%) and test significance (Log-Rank).</li>
+          <li><strong>Secondary:</strong> Fit Cox PH model to estimate hazard ratios for age, APACHE II, TLC, microbial load, culture, and X-ray findings; validate PH assumption; and visualize results.</li>
+        </ul>
+      </div>
+    </section>
 
-**Source:** Hospital-based randomized controlled trial (n = 140).  
-**Working data:** Cleaned dataset based on
-[Data](/data/Chlorhexidine Trials Data Cleaned.xlsx.)
+    <!-- Methodology -->
+    <section>
+      <h2>Methodology</h2>
+      <div class="card">
+        <h3>6.1 Data Preparation</h3>
+        <ul>
+          <li>Import dataset and standardize column names.</li>
+          <li>Handle missing values (median imputation for numeric predictors).</li>
+          <li>Encode categorical variables (e.g., treatment_arm numeric codes).</li>
+          <li>Create survival objects: <code>duration = time</code>, <code>event = event</code>.</li>
+        </ul>
 
-### 📘 **Core Variables**
+        <h3>6.2 Exploratory Data Analysis</h3>
+        <ul>
+          <li>Distribution of events vs censored observations.</li>
+          <li>Summary statistics and clinical baseline checks.</li>
+          <li>Visualizations: histograms, boxplots, correlation heatmap.</li>
+        </ul>
 
-| Column           | Description                            | Type        |
-|------------------|----------------------------------------|-------------|
-| Age              | Age in years                           | Continuous  |
-| Gender           | Male / Female                          | Categorical |
-| TrialArm_num     | 1 = 0.12%, 2 = 0.20%                   | Categorical |
-| APACHEII         | Severity score                         | Continuous  |
-| TLC_D1           | Day-1 leukocyte count                  | Continuous  |
-| time             | Time to VAP / censoring                | Continuous  |
-| event            | 1 = VAP, 0 = No VAP                    | Binary      |
+        <h3>6.3 Survival Modelling</h3>
+        <ul>
+          <li>⭐ Kaplan–Meier estimator (overall and by treatment arm)</li>
+          <li>⭐ Life tables and survival probabilities</li>
+          <li>⭐ Log-Rank test for group comparison</li>
+          <li>⭐ Cox Proportional Hazards Model (multivariable)</li>
+          <li>⭐ PH assumption checks using Schoenfeld residuals</li>
+        </ul>
 
----
+        <h3>6.4 Model Evaluation & Interpretation</h3>
+        <ul>
+          <li>Report hazard ratios (HR), 95% CI and p-values.</li>
+          <li>Interpret clinical significance and model limitations (low event count).</li>
+        </ul>
+      </div>
+    </section>
 
-# 4️⃣ Problem Statement ❓  
-This project answers key clinical questions:
+    <!-- Implementation Structure -->
+    <section>
+      <h2>Python Implementation Structure</h2>
+      <div class="card">
+        <p class="small">Key files & folders (copy from your repo):</p>
+        <table>
+          <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>/data/Chlorhexidine Trials.xlsx</code></td><td>Cleaned input dataset</td></tr>
+            <tr><td><code>/document/Publication.pdf</code></td><td>Original published trial paper</td></tr>
+            <tr><td><code>/results/*.png</code></td><td>Plots & diagnostics (KM, Schoenfeld, forest plots)</td></tr>
+            <tr><td><code>Chlorhexidine_Survival_Analysis.ipynb</code></td><td>Main notebook with analysis cells</td></tr>
+            <tr><td><code>requirements.txt</code></td><td>Python dependencies</td></tr>
+          </tbody>
+        </table>
 
-- Does **chlorhexidine 0.20%** reduce the hazard of VAP compared to 0.12%?
-- Is VAP-free survival different between treatment groups?
-- Do baseline predictors (Age, APACHE II, TLC D1, Gender) influence time to VAP?
-- Do survival curves differ significantly via Log-Rank test?
-- What do hazard ratios from the Cox model imply clinically?
+        <h3>Preview of key visuals</h3>
+        <div class="images" aria-hidden="false">
+          <div class="imgwrap"><img src="results/km_overall.png" alt="KM overall"><div class="small">Overall Kaplan–Meier</div></div>
+          <div class="imgwrap"><img src="results/km_trail_arm.png" alt="KM by arm"><div class="small">KM by treatment arm</div></div>
+          <div class="imgwrap"><img src="results/correl_heatmap.png" alt="Correlation heatmap"><div class="small">Correlation heatmap</div></div>
+          <div class="imgwrap"><img src="results/cox_forest_hr.png" alt="Forest plot"><div class="small">Forest plot (HR)</div></div>
+        </div>
+      </div>
+    </section>
 
----
+    <!-- Key findings -->
+    <section>
+      <h2>Key Findings (short)</h2>
+      <div class="card">
+        <ul>
+          <li>Overall survival remained high; small decline between days 2–6; survival ≈ 0.92 by day 10.</li>
+          <li>0.20% arm had slightly better VAP-free survival visually, but <strong>log-rank p = 0.16</strong> (not significant).</li>
+          <li>Cox model showed wide CIs and no significant predictors—limited by low number of events (n=7).</li>
+          <li>Schoenfeld residual diagnostics: all covariates satisfied PH assumption (p &gt; 0.05).</li>
+        </ul>
+      </div>
+    </section>
 
-# 5️⃣ Objectives 🎯  
+    <!-- Links and license -->
+    <div class="footer">
+      <div>
+        <a class="btn" href="/mnt/data/interpretation_of_survival_analysis.docx" title="Interpretation document">Open interpretation doc</a>
+      </div>
+      <div class="license">
+        <div style="font-size:13px;color:var(--muted)">License:</div>
+        <a class="badge" href="LICENSE">MIT</a>
+      </div>
+    </div>
 
-- Clean and preprocess clinical trial dataset  
-- Perform EDA and baseline descriptive statistics  
-- Estimate survival curves (overall and by treatment arm)  
-- Compare groups with Log-Rank test  
-- Fit Cox PH model and extract hazard ratios  
-- Check PH assumption with Schoenfeld residuals  
-- Generate adjusted survival curves  
-- Interpret survival and hazard outputs clinically  
-
----
-
-# 6️⃣ Methodology 🛠️  
-
-## 6.1 Data Preparation  
-- Renamed columns (APACHE II → APACHEII, TLC Day 1 → TLC_D1)  
-- Encoded categorical variables (gender, trial arm)  
-- Ensured numeric time/event columns  
-- Imputed missing APACHEII and TLC_D1 using median values  
-
-## 6.2 Exploratory Data Analysis 🔍  
-- Summary statistics  
-- Histograms for Age, APACHEII, TLC  
-- Event distribution by arm  
-- Life tables  
-- Initial KM survival visualization  
-
-## 6.3 Survival Modelling  
-- Kaplan–Meier overall  
-- KM by treatment arm  
-- Log-Rank test  
-- Cox Proportional Hazards model  
-- PH assumption checks  
-- Adjusted survival curves for Age, APACHEII, Treatment Arm  
-
----
-
-# 7️⃣ Python Implementation Structure 💻  
-
-```
-.
-├── data/
-│ ├── Chlorhexidine Trials Data Cleaned.xlsx
-│ ├── Data form Chlorhexidine Trial (Raw).xlsx
-│
-├── document/
-│ ├── Publication.pdf
-│
-├── results/
-│ ├── km_overall.png
-│ ├── km_by_arm.png
-│ ├── km_summary.png
-│ ├── cox_summary.png
-│ ├── cox_forest.png
-│ ├── ph_age.png
-│ ├── ph_gender.png
-│ ├── ph_apache.png
-│ ├── ph_treatment.png
-│ ├── ph_tlcd1.png
-│ ├── adj_curve_age.png
-│ ├── adj_curve_apache.png
-│ ├── adj_curve_treatment.png
-│
-├── survival_analysis_of_chlorhexidine_trial_patients.py
-├── requirements.txt
-└── README.md
-```
-
----
-
-
----
-
-# 8️⃣ Key Visualizations, Results & Interpretation 📊  
-
-### **1. Kaplan–Meier (Overall)**
-- Survival remains >0.90 for most of the 10-day follow-up.  
-- Final survival ≈ **0.78**, showing most patients remained VAP-free.
-### 🟦 **Overall KM Curve**
-<div align="center">
-  <img src="results/km_overall.png" width="600">
-</div>
-  
-
-### **2. KM by Trial Arm**
-- Both arms show high VAP-free survival.  
-- Arm 2 slightly higher, but curves largely overlap.  
-- Log-Rank p = **0.94** → No significant difference.
-### 🟩 **KM by Treatment Arm**
-<div align="center">
-  <img src="results/km_by_arm.png" width="600">
-</div>
-
-### **3. Cox PH Model**
-- All predictors have HR ≈ 1  
-- TrialArm HR = **0.97** (not significant)  
-- Low events (10 total) → wide CI → limited precision  
-- Concordance ≈ 0.59 (weak predictive power)
-### 🟧 **Cox Model Summary**
-<div align="center">
-  <img src="results/cox_summary.png" width="600">
-</div>
-
-### **4. PH Assumption**
-- All variables have p > 0.05  
-- PH assumption **not violated**  
-- Model is statistically valid
-### 🔵 **PH Assumption Plots**
-<div align="center">
-  <img src="results/ph_age.png" width="600"><br>
-  <img src="results/ph_apache.png" width="600"><br>
-  <img src="results/ph_treatment.png" width="600"><br>
-  <img src="results/ph_gender.png" width="600"><br>
-  <img src="results/ph_tlcd1.png" width="600">
-</div>
-
-### **5. Forest Plot Interpretation**
-- Wide CI for predictors due to very few events  
-- No strong or significant hazard effects detected  
-### 🟨 **Forest Plot (Hazard Ratios)**
-<div align="center">
-  <img src="results/cox_forest.png" width="600">
-</div>
-
-### **6. Adjusted Survival Curves  
-Adjusted survival curves were generated using the Cox Proportional Hazards model by fixing all covariates
-at their median values and varying one predictor at a time (Age, APACHE II, Treatment Arm).  
-These curves help interpret how individual variables affect estimated survival while holding all other factors constant.
+  </div>
+</body>
+</html>
  
-### 🟣 **Adjusted Survival Curves**
-<div align="center">
-  <img src="results/adj_curve_age.png" width="600"><br>
-  <img src="results/adj_curve_apache.png" width="600"><br>
-  <img src="results/adj_curve_treatment.png" width="600">
-</div>
----
-
-# 🔟 Discussion 💬  
-Both chlorhexidine concentrations maintained **high VAP-free survival**.  
-Although 0.20% had fewer raw events, survival timing was nearly identical.
-
-Cox modelling confirmed:  
-- No baseline variable showed significant hazard change  
-- Both concentrations behave similarly within 10-day ICU observation
-
----
-
-# 1️⃣1️⃣ Conclusion ✅  
-
-- Both concentrations show **high VAP-free survival**  
-- No statistically significant difference in time-to-VAP between arms  
-- Cox model shows no meaningful effect of Age, APACHE II, TLC D1, Gender, Trial Arm  
-- Low event count limits precision but shapes overall conclusion  
-- **Both mouthwash concentrations perform similarly** clinically  
-
----
-
-# 1️⃣2️⃣ Future Work 🔭  
-
-- Evaluate **time-varying** covariates  
-- Fit parametric models (Weibull, Exponential)  
-- Train ML survival models (Random Survival Forest, DeepSurv)  
-- Validate on external datasets (e.g., MIMIC-III/IV)  
-- Competing risks modelling (VAP vs death)  
 
 ---
 
