@@ -2,8 +2,9 @@
 
 This repository reproduces survival outcomes from a randomized clinical trial evaluating **0.12% vs 0.20% chlorhexidine mouthwash** for preventing Ventilator-Associated Pneumonia (VAP) in ICU patients.
 
-📄 Full article: **/document/Publication.pdf**  
-📘 Complete interpretation: **/document/interpretation_of_survival_analysis.docx**
+📄 [Article (PDF)](document/Publication.pdf)
+ 
+📘 [Interpretation Document](document/interpretation_of_survival_analysis.docx)
 
 ---
 
@@ -130,8 +131,6 @@ Data files stored in: `data/`
 ### **Cox HR Forest Plot**
 ![](results/cox_forest_hr.png)
 
-### **Schoenfeld Diagnostics (PH Assumption)**
-![](results/ss_r_age.png)
 
 ---
 
@@ -157,6 +156,11 @@ Data files stored in: `data/`
 - ML-based survival analysis (RSF, DeepSurv)  
 
 ---
+# 📚 Citation  
+Original Trial Paper: *Vyas et al., 2021*  
+Notebook / Script: `survival_analysis_of_chlorhexidine_trial_patients.py`  
+PDF: `/document/Publication.pdf`
+---
 
 ## 📄 License
 This project is licensed under the **MIT License**.
@@ -166,3 +170,5 @@ This project is licensed under the **MIT License**.
 <p align="center">
   <img src="https://img.shields.io/badge/Author-Dr.VaishnaviKR%20K%20R%20%E2%80%94%20PGDM%20AI%20%26%20Data%20Science-blue?style=for-the-badge">
 </p>
+---
+**End of README**  
