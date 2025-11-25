@@ -33,287 +33,251 @@ All results, tables, and plots are generated using the Python analysis script an
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Survival Analysis — Chlorhexidine Trial</title>
-  <style>
-    :root{
-      --accent:#16a085;
-      --accent-dark:#117a60;
-      --muted:#6b7280;
-      --bg:#ffffff;
-      --card:#f7fffb;
-      --maxw:900px;
-      --font-sans: "Helvetica Neue", Arial, sans-serif;
-    }
-    body{
-      font-family:var(--font-sans);
-      background:linear-gradient(180deg,#fbfdfb 0%, #ffffff 100%);
-      color:#111827;
-      margin:0;
-      padding:24px;
-      display:flex;
-      justify-content:center;
-    }
-    .container{
-      width:100%;
-      max-width:var(--maxw);
-      background:var(--bg);
-      box-shadow:0 6px 30px rgba(2,6,23,0.05);
-      border-radius:10px;
-      padding:28px;
-    }
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    h1{ margin:0; font-size:28px; letter-spacing:-0.02em; }
-    .subtitle{ color:var(--muted); margin-top:6px; font-size:13px; }
-    .badge{
-      background:linear-gradient(180deg,var(--accent) 0%, var(--accent-dark) 100%);
-      color:white;
-      padding:6px 10px;
-      border-radius:6px;
-      font-weight:600;
-      font-size:13px;
-      text-decoration:none;
-    }
-    .lead{
-      margin:18px 0 22px;
-      color:#334155;
-      line-height:1.45;
-    }
-    section{ margin-top:18px; }
-    .card{
-      background:var(--card);
-      border-left:4px solid var(--accent);
-      padding:14px 16px;
-      border-radius:8px;
-      margin-bottom:12px;
-    }
-    h2{ margin:8px 0 10px; font-size:18px; }
-    h3{ margin:6px 0; font-size:15px; color:#0f172a; }
-    ul{ margin:8px 0 12px 20px; color:#1f2937; }
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:8px;
-      font-size:14px;
-    }
-    th, td{
-      text-align:left;
-      padding:8px 10px;
-      border-bottom:1px solid #edf2f7;
-    }
-    th{ background:#ffffff; color:#0f172a; font-weight:700; }
-    .images{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:12px;
-    }
-    .imgwrap{
-      border-radius:8px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow:0 2px 12px rgba(2,6,23,0.04);
-      padding:6px;
-    }
-    img{ width:100%; height:auto; display:block; }
-    .small{ font-size:13px; color:var(--muted); margin-top:6px; }
-    .footer{
-      margin-top:18px;
-      padding-top:12px;
-      border-top:1px dashed #e6eef1;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .license{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-    }
-    .btn{
-      background:var(--accent);
-      color:white;
-      padding:8px 12px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-    }
-    code{ background:#0f172a10; padding:2px 6px; border-radius:6px; font-family:monospace; }
-    @media (max-width:720px){
-      .images{ grid-template-columns: 1fr; }
-      header{ flex-direction:column; align-items:flex-start; gap:10px; }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Survival Analysis — Chlorhexidine Trial</title>
+
+<style>
+  :root{
+    --c1:#059669;      /* green */
+    --c2:#0ea5e9;      /* blue */
+    --dark:#0f172a;
+    --muted:#64748b;
+    --bg:#ffffff;
+    --card:#f8fffb;
+    --wide:1100px;
+    --font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  body{
+    margin:0; padding:0;
+    background:linear-gradient(120deg,#eefdf8 0%,#f5faff 100%);
+    font-family:var(--font); color:var(--dark);
+    display:flex; justify-content:center;
+  }
+  .page{
+    width:100%; max-width:var(--wide);
+    padding:30px;
+  }
+
+  h1{ font-size:32px; margin-bottom:6px; }
+  h2{ margin-top:20px; font-size:24px; }
+  h3{ font-size:18px; }
+
+  .badge{
+    display:inline-block;
+    background:linear-gradient(90deg,var(--c1),var(--c2));
+    color:white;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:600; font-size:14px;
+    text-decoration:none;
+  }
+
+  /* Cards */
+  .card{
+    background:var(--card);
+    padding:18px 20px;
+    border-radius:12px;
+    box-shadow:0 4px 18px rgba(0,0,0,0.05);
+    border-left:5px solid var(--c1);
+    margin-bottom:20px;
+  }
+
+  /* Horizontal flow containers */
+  .flow-row{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .flow-col{
+    flex:1 1 calc(50% - 20px);
+    min-width:320px;
+  }
+
+  ul{ margin:8px 0 14px 20px; }
+  table{
+    width:100%; border-collapse:collapse;
+    margin-top:10px; font-size:14px;
+  }
+  th,td{
+    padding:8px 10px; border-bottom:1px solid #e5e7eb;
+    text-align:left;
+  }
+  th{ background:#fff; }
+
+  img{
+    width:100%; border-radius:10px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .img-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin-top:10px;
+  }
+
+  .footer{
+    margin-top:40px; padding-top:20px; border-top:1px solid #e2e8f0;
+    display:flex; justify-content:space-between; flex-wrap:wrap;
+  }
+
+</style>
 </head>
+
 <body>
-  <div class="container" role="main">
-    <header>
-      <div>
-        <h1>Survival Analysis — Chlorhexidine Trial</h1>
-        <div class="subtitle">Kaplan–Meier | Cox PH | Log-Rank | Schoenfeld diagnostics</div>
-      </div>
-      <div style="text-align:right">
-        <a class="badge" href="LICENSE">MIT License</a>
-      </div>
-    </header>
+<div class="page">
 
-    <p class="lead">
-      This repository contains a full survival-analysis workflow for the clinical trial:
-      <strong>Effectiveness of oral hygiene with chlorhexidine (0.12% vs 0.20%) on incidence of VAP.</strong>
-      Results include KM curves, log-rank test, multivariable Cox model, Schoenfeld checks and forest plots.
+  <!-- Header -->
+  <header>
+    <h1>Survival Analysis — Chlorhexidine Trial</h1>
+    <a class="badge" href="LICENSE">MIT License</a>
+  </header>
+  <p style="color:var(--muted); margin-top:6px;">Kaplan–Meier • Log-Rank • Cox PH • Schoenfeld Diagnostics</p>
+
+
+  <!-- Project Summary -->
+  <section class="card">
+    <h2>📌 Project Summary</h2>
+    <p>
+      This project evaluates whether <strong>0.20% chlorhexidine</strong> reduces the hazard and incidence of
+      Ventilator-Associated Pneumonia (VAP) compared to <strong>0.12%</strong> among ICU patients.
+      Using Python survival analysis (Kaplan–Meier, Log-Rank, Cox PH, Schoenfeld tests),
+      we found high survival in both groups, with a slight but <em>non-significant</em> advantage for 0.20%.
     </p>
+  </section>
 
-    <!-- Project Summary -->
-    <section>
-      <div class="card">
-        <h2>Project Summary</h2>
-        <p>
-          A survival analysis of ICU patients receiving 0.12% or 0.20% chlorhexidine mouthwash.
-          Analyses were performed in Python using the <code>lifelines</code> package. The dataset shows high VAP-free survival, few events (n=7), and no statistically significant difference between arms (log-rank p = 0.16).
-        </p>
-      </div>
-    </section>
 
-    <!-- Dataset Description -->
-    <section>
-      <h2>Dataset Description</h2>
-      <div class="card">
-        <p class="small">Files in the repository: <code>data/Chlorhexidine Trials.xlsx</code>, <code>data/Data form Chlorhexidine Trial (Raw).xlsx</code>, <code>document/Publication.pdf</code>, and analysis results in <code>results/</code>.</p>
+  <!-- Dataset -->
+  <section class="card">
+    <h2>📊 Dataset Description</h2>
+    <p style="margin-bottom:12px;">Files: <code>/data/Chlorhexidine Trials.xlsx</code>, <code>/document/Publication.pdf</code></p>
 
-        <table aria-label="Dataset variables">
-          <thead>
-            <tr><th>Variable</th><th>Description</th><th>Type</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>time</strong></td><td>Days until VAP or censoring</td><td>Continuous</td></tr>
-            <tr><td><strong>event</strong></td><td>Event indicator (1 = VAP, 0 = censored)</td><td>Binary</td></tr>
-            <tr><td>Age</td><td>Patient age (years)</td><td>Continuous</td></tr>
-            <tr><td>Gender</td><td>Male / Female</td><td>Categorical</td></tr>
-            <tr><td>chest_xray, culture, ulcer</td><td>Clinical indicators (binary)</td><td>Binary</td></tr>
-            <tr><td>apache_score, cpis, tlc_score, microbial_load</td><td>Severity & infection markers</td><td>Continuous</td></tr>
-            <tr><td>treatment_arm</td><td>1 = 0.12% | 2 = 0.20%</td><td>Categorical</td></tr>
-          </tbody>
-        </table>
+    <table>
+      <thead><tr><th>Variable</th><th>Description</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>time</td><td>Days until VAP or censoring</td><td>Continuous</td></tr>
+        <tr><td>event</td><td>1 = VAP, 0 = censored</td><td>Binary</td></tr>
+        <tr><td>Age</td><td>Patient age</td><td>Continuous</td></tr>
+        <tr><td>Gender</td><td>Male/Female</td><td>Categorical</td></tr>
+        <tr><td>chest_xray, culture, ulcer</td><td>Clinical indicators</td><td>Binary</td></tr>
+        <tr><td>apache_score, tlc_score, microbial_load</td><td>Severity & infection markers</td><td>Continuous</td></tr>
+        <tr><td>treatment_arm</td><td>1 = 0.12%, 2 = 0.20%</td><td>Categorical</td></tr>
+      </tbody>
+    </table>
 
-        <p class="small">Full data dictionary and transformation rules are included in the uploaded interpretation document: <a href="/mnt/data/interpretation_of_survival_analysis.docx">interpretation_of_survival_analysis.docx</a>.</p>
-      </div>
-    </section>
+  </section>
 
-    <!-- Problem Statement & Objectives -->
-    <section>
-      <div class="card">
-        <h2>Problem Statement</h2>
-        <p>Does 0.20% chlorhexidine reduce the incidence and hazard of VAP compared with 0.12% in mechanically ventilated ICU patients? Which baseline factors influence time to VAP?</p>
 
-        <h3>Objectives</h3>
-        <ul>
-          <li><strong>Primary:</strong> Compare VAP-free survival (0.12% vs 0.20%) and test significance (Log-Rank).</li>
-          <li><strong>Secondary:</strong> Fit Cox PH model to estimate hazard ratios for age, APACHE II, TLC, microbial load, culture, and X-ray findings; validate PH assumption; and visualize results.</li>
-        </ul>
-      </div>
-    </section>
+  <!-- Problem Statement + Objectives -->
+  <section class="flow-row">
+    <div class="flow-col card">
+      <h2>❓ Problem Statement</h2>
+      <p>
+        Does 0.20% chlorhexidine reduce VAP risk more effectively than 0.12%?
+        Which clinical variables influence <strong>time to VAP</strong>?
+      </p>
+    </div>
 
-    <!-- Methodology -->
-    <section>
-      <h2>Methodology</h2>
-      <div class="card">
+    <div class="flow-col card">
+      <h2>🎯 Objectives</h2>
+      <ul>
+        <li>Compare VAP-free survival (0.12% vs 0.20%)</li>
+        <li>Perform Log-Rank significance testing</li>
+        <li>Model hazard ratios using Cox PH</li>
+        <li>Check PH assumptions using Schoenfeld residuals</li>
+        <li>Visualize clinical risk patterns</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- Methodology Horizontal Flow -->
+  <section class="card">
+    <h2>🧪 Methodology (Horizontal Flow)</h2>
+
+    <div class="flow-row">
+      <div class="flow-col card">
         <h3>6.1 Data Preparation</h3>
         <ul>
-          <li>Import dataset and standardize column names.</li>
-          <li>Handle missing values (median imputation for numeric predictors).</li>
-          <li>Encode categorical variables (e.g., treatment_arm numeric codes).</li>
-          <li>Create survival objects: <code>duration = time</code>, <code>event = event</code>.</li>
+          <li>Import dataset</li>
+          <li>Clean & rename columns</li>
+          <li>Encode categorical variables</li>
+          <li>Create survival objects (time, event)</li>
         </ul>
+      </div>
 
+      <div class="flow-col card">
         <h3>6.2 Exploratory Data Analysis</h3>
         <ul>
-          <li>Distribution of events vs censored observations.</li>
-          <li>Summary statistics and clinical baseline checks.</li>
-          <li>Visualizations: histograms, boxplots, correlation heatmap.</li>
+          <li>Events vs censored distribution</li>
+          <li>Summary statistics</li>
+          <li>Histograms & boxplots</li>
         </ul>
+      </div>
 
+      <div class="flow-col card">
         <h3>6.3 Survival Modelling</h3>
         <ul>
-          <li>⭐ Kaplan–Meier estimator (overall and by treatment arm)</li>
-          <li>⭐ Life tables and survival probabilities</li>
-          <li>⭐ Log-Rank test for group comparison</li>
-          <li>⭐ Cox Proportional Hazards Model (multivariable)</li>
-          <li>⭐ PH assumption checks using Schoenfeld residuals</li>
+          <li>⭐ Kaplan–Meier curves</li>
+          <li>⭐ Life tables</li>
+          <li>⭐ Log-Rank test</li>
+          <li>⭐ Cox PH model</li>
+          <li>⭐ Schoenfeld PH diagnostics</li>
         </ul>
+      </div>
 
-        <h3>6.4 Model Evaluation & Interpretation</h3>
+      <div class="flow-col card">
+        <h3>6.4 Model Evaluation</h3>
         <ul>
-          <li>Report hazard ratios (HR), 95% CI and p-values.</li>
-          <li>Interpret clinical significance and model limitations (low event count).</li>
+          <li>Hazard ratios & confidence intervals</li>
+          <li>P-values</li>
+          <li>Clinical significance</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- Implementation Structure -->
-    <section>
-      <h2>Python Implementation Structure</h2>
-      <div class="card">
-        <p class="small">Key files & folders (copy from your repo):</p>
-        <table>
-          <thead><tr><th>Path</th><th>Purpose</th></tr></thead>
-          <tbody>
-            <tr><td><code>/data/Chlorhexidine Trials.xlsx</code></td><td>Cleaned input dataset</td></tr>
-            <tr><td><code>/document/Publication.pdf</code></td><td>Original published trial paper</td></tr>
-            <tr><td><code>/results/*.png</code></td><td>Plots & diagnostics (KM, Schoenfeld, forest plots)</td></tr>
-            <tr><td><code>Chlorhexidine_Survival_Analysis.ipynb</code></td><td>Main notebook with analysis cells</td></tr>
-            <tr><td><code>requirements.txt</code></td><td>Python dependencies</td></tr>
-          </tbody>
-        </table>
-
-        <h3>Preview of key visuals</h3>
-        <div class="images" aria-hidden="false">
-          <div class="imgwrap"><img src="results/km_overall.png" alt="KM overall"><div class="small">Overall Kaplan–Meier</div></div>
-          <div class="imgwrap"><img src="results/km_trail_arm.png" alt="KM by arm"><div class="small">KM by treatment arm</div></div>
-          <div class="imgwrap"><img src="results/correl_heatmap.png" alt="Correlation heatmap"><div class="small">Correlation heatmap</div></div>
-          <div class="imgwrap"><img src="results/cox_forest_hr.png" alt="Forest plot"><div class="small">Forest plot (HR)</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Key findings -->
-    <section>
-      <h2>Key Findings (short)</h2>
-      <div class="card">
-        <ul>
-          <li>Overall survival remained high; small decline between days 2–6; survival ≈ 0.92 by day 10.</li>
-          <li>0.20% arm had slightly better VAP-free survival visually, but <strong>log-rank p = 0.16</strong> (not significant).</li>
-          <li>Cox model showed wide CIs and no significant predictors—limited by low number of events (n=7).</li>
-          <li>Schoenfeld residual diagnostics: all covariates satisfied PH assumption (p &gt; 0.05).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Links and license -->
-    <div class="footer">
-      <div>
-        <a class="btn" href="/mnt/data/interpretation_of_survival_analysis.docx" title="Interpretation document">Open interpretation doc</a>
-      </div>
-      <div class="license">
-        <div style="font-size:13px;color:var(--muted)">License:</div>
-        <a class="badge" href="LICENSE">MIT</a>
       </div>
     </div>
 
+  </section>
+
+
+  <!-- Python Implementation Structure -->
+  <section class="card">
+    <h2>🖥️ Python Implementation Structure</h2>
+    <p class="small">Key files & folders from the repository:</p>
+
+    <table>
+      <thead><tr><th>Path</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>/data/*.xlsx</code></td><td>Raw and cleaned clinical data</td></tr>
+        <tr><td><code>/document/Publication.pdf</code></td><td>Trial study reference</td></tr>
+        <tr><td><code>/results/*.png</code></td><td>All plots (KM, HR, Schoenfeld)</td></tr>
+        <tr><td><code>Chlorhexidine_Survival_Analysis.ipynb</code></td><td>Main notebook</td></tr>
+        <tr><td><code>requirements.txt</code></td><td>Dependencies</td></tr>
+      </tbody>
+    </table>
+
+    <h3>📸 Visual Outputs</h3>
+    <div class="img-grid">
+      <img src="results/km_overall.png" alt="KM overall">
+      <img src="results/km_trail_arm.png" alt="KM by arm">
+      <img src="results/cox_forest_hr.png" alt="Forest HR">
+      <img src="results/correl_heatmap.png" alt="Heatmap">
+    </div>
+
+  </section>
+
+
+  <!-- Footer -->
+  <div class="footer">
+    <a class="badge" href="LICENSE">MIT License</a>
+    <a class="badge" href="/mnt/data/interpretation_of_survival_analysis.docx">Download Interpretation Doc</a>
   </div>
+
+</div>
 </body>
 </html>
- 
 
----
 
 # 📚 Citation  
 Original Trial Paper: *Vyas et al., 2021*  
